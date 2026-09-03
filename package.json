@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx,json,css,md}\"",
-    "build:frontend": "pnpm --filter frontend-package-name build"
+    "build:frontend": "pnpm --filter shared-types build && pnpm --filter frontend build"
   },
   "keywords": [],
   "author": "",
