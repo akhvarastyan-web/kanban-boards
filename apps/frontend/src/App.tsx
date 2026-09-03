@@ -36,12 +36,16 @@ function App() {
     fetchBoards()
   }, [])
 
-  const onAddBoard = (newBoard: Board) => {
-    setBoards((prev) => [...prev, newBoard])
-    setSelectedBoard(newBoard)
-    setBoardIdInput(newBoard.id)
-    setIsSidebarOpen(false)
+  const onAddBoard = (newBoard: { id: string; name: string; columns?: Board['columns'] }) => {
+  const boardToAdd: Board = {
+    ...newBoard,
+    columns: newBoard.columns || { todo: [], inProgress: [], done: [] }
   }
+  setBoards((prev) => [...prev, boardToAdd])
+  setSelectedBoard(boardToAdd)
+  setBoardIdInput(boardToAdd.id)
+  setIsSidebarOpen(false)
+}
 
 
   const loadBoardWithCards = async (board: Board): Promise<Board> => {

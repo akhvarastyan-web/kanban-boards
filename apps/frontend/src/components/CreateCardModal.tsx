@@ -1,9 +1,14 @@
 import { useState } from 'react';
 
-type CreateCardModalProps = {
+export type CreateCardModalProps = {
   isOpen: boolean;
   onClose: () => void;
-  onCreate: (cardData: { title: string; description: string }) => Promise<void> | void;
+  onCreate: (cardData: { 
+    title: string; 
+    description: string; 
+    columnId?: string; 
+    status?: 'todo' | 'inProgress' | 'done';
+  }) => Promise<void> | void;
 };
 
 export function CreateCardModal({ isOpen, onClose, onCreate }: CreateCardModalProps) {
